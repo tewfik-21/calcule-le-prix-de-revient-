@@ -1,0 +1,58 @@
+Created At: 2026-08-25T17:04:03Z
+Completed At: 2026-08-25T17:04:56Z
+
+				The command completed successfully.
+				Output:
+				
+  import React, { useState } from 'react';
+> import { X, ImagePlus, CheckCircle2 } from 'lucide-react';
+  import type { Store, UserSession } from '../../types';
+  import { ALGERIAN_WILAYAS } from '../../App';
+    user: UserSession | null;
+    onClose: () => void;
+>   onSubmit: (store: Store, logoFile?: File, bannerFile?: File) => void;
+    t: any;
+    lang: 'fr' | 'ar';
+    const [selectedCats, setSelectedCats] = useState<string[]>([]);
+  
+>   // Files
+>   const [logoFile, setLogoFile] = useState<File | null>(null);
+>   const [bannerFile, setBannerFile] = useState<File | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+  
+      };
+  
+>     onSubmit(store, logoFile || undefined, bannerFile || undefined);
+    };
+  
+                <div className="flex gap-3 items-center">
+                  <div className="h-16 w-16 rounded-2xl border border-dashed border-slate-600 bg-slate-900/50 flex 
+items-center justify-center overflow-hidden relative">
+>                   {logoFile ? (
+>                     <img src={URL.createObjectURL(logoFile)} className="h-full w-full object-cover" alt="logo" />
+                    ) : (
+>                     <ImagePlus className="h-5 w-5 text-slate-500" />
+                    )}
+>                   <input type="file" accept="image/*" className="absolute inset-0 opacity-0 cursor-pointer" 
+onChange={e => e.target.files && setLogoFile(e.target.files[0])} />
+                  </div>
+                  <div className="text-[9px] text-slate-400">RecommandǸ: CarrǸ (1:1)</div>
+  
+              <div>
+>               <label className="block text-[10px] font-black text-slate-400 uppercase tracking-wider mb-1.5">Image 
+de Couverture</label>
+                <div className="flex gap-3 items-center">
+                  <div className="h-16 w-24 rounded-2xl border border-dashed border-slate-600 bg-slate-900/50 flex 
+items-center justify-center overflow-hidden relative">
+>                   {bannerFile ? (
+>                     <img src={URL.createObjectURL(bannerFile)} className="h-full w-full object-cover" alt="banner" />
+                    ) : (
+>                     <ImagePlus className="h-5 w-5 text-slate-500" />
+                    )}
+>                   <input type="file" accept="image/*" className="absolute inset-0 opacity-0 cursor-pointer" 
+onChange={e => e.target.files && setBannerFile(e.target.files[0])} />
+                  </div>
+                  <div className="text-[9px] text-slate-400">RecommandǸ: Paysage (16:9)</div>
+
+
+

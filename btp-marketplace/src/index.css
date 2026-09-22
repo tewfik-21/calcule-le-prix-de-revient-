@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+    --card: 224 71% 6%;
+    --card-foreground: 213 31% 91%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 213 31% 91%;
+    --primary: 24 95% 50%; /* Vibrant industrial orange */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 142 70% 45%; /* Emerald green for BTP */
+    --secondary-foreground: 0 0% 100%;
+    --accent: 199 89% 48%; /* Ice blue for ceramics & brickworks */
+    --accent-foreground: 0 0% 100%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 24 95% 50%;
+  }
+
+  body {
+    background-color: #0f172a;
+    color: rgb(241, 245, 249);
+    font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(249, 115, 22, 0.6);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(249, 115, 22, 0.9);
+}
+
+/* Background grid mesh */
+.bg-grid-mesh {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Glassmorphism panels */
+.glass-panel {
+  background: rgba(30, 41, 59, 0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-glow {
+  background: rgba(30, 41, 59, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  box-shadow: 0 12px 40px 0 rgba(249, 115, 22, 0.08);
+}
+
+.glass-card {
+  background: rgba(30, 41, 59, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Premium Card glowing border pulsing effect */
+@keyframes premiumPulse {
+  0%, 100% {
+    border-color: rgba(245, 158, 11, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 15px rgba(245, 158, 11, 0.04);
+  }
+  50% {
+    border-color: rgba(245, 158, 11, 0.75);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(245, 158, 11, 0.15);
+  }
+}
+
+.premium-glow-card {
+  background: linear-gradient(135deg, rgba(16, 23, 44, 0.6) 0%, rgba(26, 20, 11, 0.4) 100%);
+  animation: premiumPulse 4s infinite ease-in-out;
+}
+
+.premium-glow-card:hover {
+  transform: translateY(-6px);
+  background: linear-gradient(135deg, rgba(20, 29, 56, 0.8) 0%, rgba(38, 28, 13, 0.6) 100%);
+}
+
+/* GPS Map dynamic categories frames */
+.map-frame-all {
+  border: 1.5px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s ease;
+}
+
+.map-frame-mines_carrieres {
+  border: 1.5px solid rgba(249, 115, 22, 0.35);
+  box-shadow: 0 10px 35px rgba(249, 115, 22, 0.05);
+  transition: all 0.5s ease;
+}
+
+.map-frame-ceramique_briqueterie {
+  border: 1.5px solid rgba(14, 165, 233, 0.35);
+  box-shadow: 0 10px 35px rgba(14, 165, 233, 0.05);
+  transition: all 0.5s ease;
+}
+
+.map-frame-btp {
+  border: 1.5px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 10px 35px rgba(16, 185, 129, 0.05);
+  transition: all 0.5s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Map Popups and controls styling */
+.leaflet-container {
+  font-family: inherit;
+  background: #090c15 !important;
+  border-radius: 1.25rem;
+}
+
+.leaflet-bar {
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 0.75rem !important;
+  overflow: hidden;
+}
+
+.leaflet-bar a {
+  background-color: rgba(13, 20, 38, 0.95) !important;
+  color: #f1f5f9 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+}
+
+.leaflet-bar a:hover {
+  background-color: #f97316 !important;
+  color: white !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(10, 14, 25, 0.95) !important;
+  backdrop-filter: blur(12px);
+  color: #f1f5f9 !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 1rem !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(10, 14, 25, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Custom CSS icons marker pins */
+.custom-div-icon {
+  background: none;
+  border: none;
+}
+
+.marker-pin {
+  width: 32px;
+  height: 32px;
+  border-radius: 50% 50% 50% 0;
+  background: #f97316;
+  position: absolute;
+  transform: rotate(-45deg);
+  left: 50%;
+  top: 50%;
+  margin: -16px 0 0 -16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+.marker-pin::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #090c15;
+  position: absolute;
+}
+
+.marker-pin-mines {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.6);
+}
+
+.marker-pin-ceramique {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  box-shadow: 0 0 12px rgba(14, 165, 233, 0.6);
+}
+
+.marker-pin-btp {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+}
+
+/* Dynamic glow button states */
+.btn-glow-orange:hover {
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.35);
+}
+
+.btn-glow-sky:hover {
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.35);
+}
+
+.btn-glow-emerald:hover {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+}
+
+/* Mobile Smoothness & Native Feel Optimizations */
+html, body {
+  overscroll-behavior-y: none; /* Prevent pull-to-refresh on mobile */
+  -webkit-tap-highlight-color: transparent; /* Remove blue tap highlight */
+  user-select: none; /* Prevent text selection on random taps */
+}
+
+input, textarea {
+  user-select: auto; /* Allow text selection in inputs */
+}
+
+
+
+/* Hardware acceleration for smooth scrolling */
+.overflow-y-auto, .overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Better touch targets for buttons */
+button, a {
+  touch-action: manipulation;
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top);
+}

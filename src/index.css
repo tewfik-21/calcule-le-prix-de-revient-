@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background-color: #07080d;
+    color: #f4f4f5;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* ==========================================================================
+   PREMIUM DARK GLOWING / GLASSMORPHIC OVERRIDES
+   ========================================================================== */
+
+/* App Container and background */
+#app-root {
+  background-color: #07080d !important;
+  color: #f4f4f5 !important;
+  font-family: "Plus Jakarta Sans", "Inter", sans-serif !important;
+  border: none !important; /* Remove the brutalist border */
+}
+
+/* Custom background glow effects */
+.bg-glow-emerald {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0) 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-glow-blue {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, rgba(59, 130, 246, 0) 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating animation */
+@keyframes soft-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-soft-float {
+  animation: soft-float 5s ease-in-out infinite;
+}
+
+/* Pulse animation */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Navigation Sidebar override */
+#main-sidebar {
+  background-color: rgba(11, 12, 20, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 0px !important;
+}
+
+/* Header override */
+header.sticky {
+  background-color: rgba(11, 12, 20, 0.7) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Headings: Premium tracking, uppercase but refined */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important; /* Keep original capitalization */
+}
+
+/* Rounded Cards with glassmorphic depth */
+.rounded-xl, .rounded-lg, .rounded-md, .rounded-2xl {
+  border-radius: 16px !important;
+}
+
+.rounded-sm {
+  border-radius: 8px !important;
+}
+
+/* Glassmorphism styling for default white cards */
+.bg-white {
+  background: rgba(18, 20, 32, 0.6) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bg-white:hover {
+  border-color: rgba(16, 185, 129, 0.2) !important;
+}
+
+/* Grey backgrounds to rich slate/zinc elements */
+.bg-slate-50, .bg-slate-100, .bg-slate-50\/20, .bg-slate-50\/50, .bg-slate-100\/50, .bg-slate-100\/70, .bg-slate-200 {
+  background-color: rgba(11, 12, 20, 0.5) !important;
+  color: #f4f4f5 !important;
+  border-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+.border-slate-100, .border-slate-150, .border-slate-200, .border-slate-300, .border-blue-100 {
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Text color overrides */
+.text-slate-900, .text-slate-800, .text-slate-700 {
+  color: #ffffff !important;
+}
+
+.text-slate-600, .text-slate-500, .text-slate-400 {
+  color: #a1a1aa !important; /* zinc-400 */
+}
+
+/* Forms and interactive button fixes */
+#toggle-settings-bar, #btn-print-report, #toggle-saisie-directe, #toggle-personnel-direct {
+  border-radius: 8px !important;
+}
+
+/* Premium Form Inputs styling */
+input[type="text"], input[type="number"], select, textarea {
+  background-color: rgba(9, 9, 11, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border-radius: 10px !important;
+  font-family: "JetBrains Mono", monospace !important;
+  font-weight: 500 !important;
+  padding: 0.6rem 0.9rem !important;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
+  border-color: #10b981 !important; /* emerald-500 */
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15) !important;
+  background-color: rgba(9, 9, 11, 0.9) !important;
+  outline: none !important;
+}
+
+/* Custom styles for select elements dropdown option */
+select option {
+  background-color: #0b0c14 !important;
+  color: #ffffff !important;
+}
+
+/* Tables style */
+table {
+  border-collapse: collapse !important;
+}
+
+th {
+  background-color: rgba(11, 12, 20, 0.9) !important;
+  color: #a1a1aa !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.06) !important;
+  padding: 12px 16px !important;
+}
+
+td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+  font-family: "JetBrains Mono", monospace !important;
+  padding: 14px 16px !important;
+}
+
+tr:hover {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Button UI polishing */
+button {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #07080d;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Custom CSS Print Rules for professional corporate report exports */
+@media print {
+  header, 
+  aside, 
+  #global-settings-panel, 
+  button, 
+  form, 
+  .print\:hidden {
+    display: none !important;
+  }
+
+  body {
+    background-color: white !important;
+    color: black !important;
+    font-size: 11px !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    width: 100% !important;
+  }
+
+  #app-root, 
+  #main-content-panel {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e1 !important;
+    padding: 6px 8px !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+  }
+
+  .rounded-xl, .rounded-lg, .rounded-md, .rounded-2xl {
+    border-radius: 4px !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  #chart-bar-container,
+  #chart-pie-container {
+    page-break-inside: avoid !important;
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+  }
+  
+  img {
+    filter: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* WOW Design enhancements */
+.glass-panel {
+  background: rgba(15, 17, 28, 0.5) !important;
+  backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.6) !important;
+}
+
+.text-gradient-emerald {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   premium UI UPGRADES (radial gradients and glowing buttons)
+   ========================================================================== */
+
+/* Custom premium background gradient with subtle color transitions */
+body, #app-root {
+  background: radial-gradient(circle at 10% 20%, #0d1127 0%, #06070d 45%, #020306 90%) !important;
+  color: #f4f4f5 !important;
+}
+
+/* Global button animations and lighting styles */
+button {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+button:hover {
+  transform: translateY(-1.5px);
+}
+
+button:active {
+  transform: translateY(0.5px) scale(0.98);
+}
+
+/* Rich color updates for primary/action buttons */
+
+/* Emerald / Green buttons */
+.bg-emerald-500, button.bg-emerald-500, .bg-emerald-500\/15 {
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%) !important;
+  color: #030712 !important;
+  font-weight: 800 !important;
+  border: 1px solid rgba(52, 211, 153, 0.3) !important;
+  box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.2) !important;
+}
+
+.bg-emerald-500:hover, button.bg-emerald-500:hover {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+  box-shadow: 0 6px 20px 0 rgba(16, 185, 129, 0.4) !important;
+}
+
+/* Blue / Info buttons */
+.bg-blue-600, button.bg-blue-600 {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(96, 165, 250, 0.3) !important;
+  box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.25) !important;
+}
+
+.bg-blue-600:hover, button.bg-blue-600:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%) !important;
+  box-shadow: 0 6px 20px 0 rgba(37, 99, 235, 0.45) !important;
+}
+
+/* Purple / AI buttons */
+.from-purple-600.to-indigo-600 {
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%) !important;
+  border: 1px solid rgba(167, 139, 250, 0.3) !important;
+  box-shadow: 0 4px 14px 0 rgba(124, 58, 237, 0.3) !important;
+}
+
+.from-purple-600.to-indigo-600:hover {
+  background: linear-gradient(135deg, #6d28d9 0%, #4338ca 100%) !important;
+  box-shadow: 0 6px 20px 0 rgba(124, 58, 237, 0.5) !important;
+}
+
+/* Red / Danger buttons */
+button.text-rose-600:hover, button.bg-rose-600:hover {
+  box-shadow: 0 0 15px rgba(244, 63, 94, 0.35) !important;
+  background-color: rgba(244, 63, 94, 0.15) !important;
+}
+
+/* Inactive layout tabs */
+button[id^="btn-tab-"] {
+  border-radius: 12px !important;
+  margin-right: 4px;
+}
+
+button[id^="btn-tab-"].bg-emerald-500 {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: #020617 !important;
+  border-color: #34d399 !important;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.35) !important;
+  transform: scale(1.02);
+}
+
+button[id^="btn-tab-"].bg-zinc-950:hover {
+  border-color: rgba(52, 211, 153, 0.4) !important;
+  color: #ffffff !important;
+}
+
+/* Sidebar navigation buttons */
+button[id^="nav-btn-"] {
+  border-radius: 12px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+button[id^="nav-btn-"].bg-gradient-to-r {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.12) !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+  transform: translateX(3px);
+}
+
+button[id^="nav-btn-"].hover\:border-emerald-500\/20:hover {
+  border-color: rgba(16, 185, 129, 0.3) !important;
+  color: #ffffff !important;
+  transform: translateX(1px);
+}
+
+/* Enhance panels glassmorphism hover border lighting */
+.bg-white {
+  background: rgba(15, 17, 28, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.bg-white:hover {
+  border-color: rgba(16, 185, 129, 0.15) !important;
+}
+
